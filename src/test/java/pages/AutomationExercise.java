@@ -8,8 +8,8 @@ import utilities.Driver;
 public class AutomationExercise {
 
 
-    public AutomationExercise(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public AutomationExercise() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "//div[@class='logo pull-left']")
@@ -58,43 +58,43 @@ public class AutomationExercise {
     public WebElement geburtsdatumJahrSelect;
 
     @FindBy(id = "newsletter")
-    public WebElement  kontrollKästchenSignUpForOurNewsletter;
+    public WebElement kontrollKästchenSignUpForOurNewsletter;
 
     @FindBy(id = "optin")
-    public WebElement  kontrollKästchenReceiveSpecialOffersFromOurPartners;
+    public WebElement kontrollKästchenReceiveSpecialOffersFromOurPartners;
 
     @FindBy(id = "first_name")
-    public WebElement  vornameTextBox;
+    public WebElement vornameTextBox;
 
     @FindBy(id = "last_name")
-    public WebElement  nachnameTextBox;
+    public WebElement nachnameTextBox;
 
     @FindBy(id = "company")
-    public WebElement  firmaTextBox;
+    public WebElement firmaTextBox;
 
     @FindBy(id = "address1")
-    public WebElement   adresse1TextBox;
+    public WebElement adresse1TextBox;
 
     @FindBy(xpath = "//Input[@id='address2']")
-    public WebElement   adresse2TextBox;
+    public WebElement adresse2TextBox;
 
     @FindBy(id = "country")
-    public WebElement  landSelect;
+    public WebElement landSelect;
 
     @FindBy(id = "state")
-    public WebElement  bundeslandTextBox;
+    public WebElement bundeslandTextBox;
 
     @FindBy(id = "city")
-    public WebElement  stadtTextBox;
+    public WebElement stadtTextBox;
 
     @FindBy(id = "zipcode")
-    public WebElement postleitzahlTextBox ;
+    public WebElement postleitzahlTextBox;
 
     @FindBy(id = "mobile_number")
-    public WebElement handyNummerTextBox ;
+    public WebElement handyNummerTextBox;
 
     @FindBy(xpath = "(//button[@class='btn btn-default'])[1]")
-    public WebElement kontoErstellenSchaltfläche ;
+    public WebElement kontoErstellenSchaltfläche;
 
     @FindBy(xpath = "//b[.='Account Created!']")
     public WebElement accountCreatedText;
@@ -107,10 +107,10 @@ public class AutomationExercise {
     public WebElement loggedInAsText;
 
     @FindBy(xpath = "(//*[.=' Delete Account'])[1]")
-    public  WebElement deleteAccountLink;
+    public WebElement deleteAccountLink;
 
     @FindBy(xpath = "//div[@class='page-header']")
-    public  WebElement deleteAccountText;
+    public WebElement deleteAccountText;
 
     @FindBy(xpath = "//button[@class='btn btn-primary js-tooltip']")
     public WebElement optionsButton;
@@ -134,16 +134,16 @@ public class AutomationExercise {
     public WebElement nameBoxUnterGetInTouch;
 
     @FindBy(xpath = "(//input[@class='form-control'])[4]")
-    public WebElement  dateiAuswählenSchaltfläche;
+    public WebElement dateiAuswählenSchaltfläche;
 
     @FindBy(xpath = "//input[@class='btn btn-primary pull-left submit_form']")
-    public WebElement  submitSchaltfläche;
+    public WebElement submitSchaltfläche;
 
     @FindBy(xpath = "//div[@class='status alert alert-success']")
-    public WebElement  successYourDetailsHaveBeenSubmittedSuccessfullyText;
+    public WebElement successYourDetailsHaveBeenSubmittedSuccessfullyText;
 
     @FindBy(xpath = "//a[@class='btn btn-success']")
-    public WebElement  homeSchaltflächeUnterGetInTouch;
+    public WebElement homeSchaltflächeUnterGetInTouch;
 
     @FindBy(xpath = "//I[@class='fa fa-envelope']")
     public WebElement contactUsLink;
@@ -151,8 +151,102 @@ public class AutomationExercise {
     @FindBy(xpath = "(//h2[@class='title text-center'])[1]")
     public WebElement featuresItemsText;
 
+    @FindBy(xpath = "(//i[@class='fa fa-list'])[1]")
+    public WebElement testCasesLink;
+
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    public WebElement testCasesText;
+
+    @FindBy(xpath = "//i[@class='material-icons card_travel']")
+    public WebElement productsLink;
+
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    public WebElement allProductsText;
+
+    @FindBy(xpath = "(//i[@class='fa fa-plus-square'])[1]")
+    public WebElement viewProductLinkFirstProduct;
+
+    @FindBy(xpath = "(//p[.='Blue Top'])[1]")
+    public WebElement productNameFirstProduct;
+
+    @FindBy(xpath = "(//p[.='Men Tshirt'])[1]")
+    public WebElement productNameSecondProduct;
+
+    @FindBy(xpath = "//p[.='Category: Women > Tops']")
+    public WebElement productCategoryFirstProduct;
+
+    @FindBy(xpath = "(//h2[.='Rs. 500'])[1]")
+    public WebElement productPriceFirstProduct;
+
+    @FindBy(xpath = "(//h2[.='Rs. 400'])[1]")
+    public WebElement productPriceSecondProduct;
+
+    @FindBy(xpath = "//input[@name='quantity']")
+    public WebElement quantityBox;
+
+    @FindBy(xpath = "//button[@class='btn btn-default cart']")
+    public WebElement addToChartSchaltfläche;
+
+    @FindBy(xpath = "//b[.='Availability:']")
+    public WebElement productAvailabilityFirstProduct;
+
+    @FindBy(xpath = "//b[.='Condition:']")
+    public WebElement productConditionFirstProduct;
+
+    @FindBy(xpath = "//b[.='Brand:']")
+    public WebElement productBrandFirstProduct;
+
+    @FindBy(xpath = "//input[@id='search_product']")
+    public WebElement searchProductBox;
+
+    @FindBy(xpath = "//button[@id='submit_search']")
+    public WebElement searchProductSchaltfläche;
+
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    public WebElement searchedProductsText;
+
+    @FindBy(xpath = "(//p[.='Premium Polo T-Shirts'])[1]")
+    public WebElement poloProductText;
+
+    @FindBy(xpath = "//h2[.='Subscription']")
+    public WebElement subscriptionText;
+
+    @FindBy(id = "susbscribe_email")
+    public WebElement eMailAdresseBoxUnterSubscription;
+
+    @FindBy(xpath = "//i[@class='fa fa-shopping-cart']")
+    public WebElement cartLink;
+
+    @FindBy(xpath = "(//a[@class='btn btn-default add-to-cart'])[1]")
+    public WebElement addToCartFirstProduct;
+
+     @FindBy (xpath = "//button[@class='btn btn-success close-modal btn-block']")
+     public WebElement continueShoppingSchaltfläche;
+
+    @FindBy(xpath = "(//a[@class='btn btn-default add-to-cart'])[3]")
+    public WebElement addToCartSecondProduct;
+
+     @FindBy (xpath = "//U[.='View Cart']")
+     public WebElement viewCartLinkUnterAdded;
+
+     @FindBy (xpath = "//div[@class='footer-widget']")
+     public WebElement footPage;
 
 
+
+
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
 
 
 }

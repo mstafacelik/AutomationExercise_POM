@@ -1,7 +1,6 @@
 package tests.userStory_01;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -10,17 +9,16 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class TestCase_04_LogoutUser extends TestBaseRapor {
+public class TestCase_08_VerifyAllProductsAnsProductDetailPage extends TestBaseRapor {
 
-
+    SoftAssert softAssert=new SoftAssert();
     AutomationExercise automationExercise;
-    SoftAssert softAssert = new SoftAssert();
+
 
     @Test
-    public void LogoutUser (){
+    public void verifyAllProductsAnsProductDetailPage(){
 
         automationExercise= new AutomationExercise();
-
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -34,35 +32,27 @@ public class TestCase_04_LogoutUser extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
+        automationExercise.productsLink.click();
 
-        automationExercise.signupLoginLink.click();
-        extentTest.info("Es wurde auf die Schaltfläche „Signup / Login“ geklickt.");
+        softAssert.assertTrue(automationExercise.allProductsText.isDisplayed());
 
-        automationExercise.loginToYourAccountText.isDisplayed();
+        automationExercise.viewProductLinkFirstProduct.click();
 
-        automationExercise.logInEMailAdresseBox
-                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
-                        Keys.TAB + ConfigReader.getProperty("AECorrectPassword"), Keys.TAB, Keys.ENTER);
+        Driver.wait(2);
 
+        softAssert.assertTrue((automationExercise.productNameFirstProduct.isDisplayed()));
+        softAssert.assertTrue((automationExercise.productCategoryFirstProduct.isDisplayed()));
+        softAssert.assertTrue((automationExercise.productPriceFirstProduct.isDisplayed()));
+        softAssert.assertTrue((automationExercise.productAvailabilityFirstProduct.isDisplayed()));
+        softAssert.assertTrue((automationExercise.productConditionFirstProduct.isDisplayed()));
+        softAssert.assertTrue((automationExercise.productBrandFirstProduct.isDisplayed()));
 
-       softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
-
-        Driver.wait(3);
-
-
-        automationExercise.logOutLink.click();
-
-
-        softAssert.assertTrue(automationExercise.signupLoginLink.isDisplayed());
 
         softAssert.assertAll();
 
 
 
-
-
-
-
     }
+
 
 }

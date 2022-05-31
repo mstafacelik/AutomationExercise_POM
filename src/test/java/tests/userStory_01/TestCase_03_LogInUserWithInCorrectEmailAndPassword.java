@@ -14,14 +14,14 @@ import utilities.TestBaseRapor;
 
 public class TestCase_03_LogInUserWithInCorrectEmailAndPassword extends TestBaseRapor {
 
-    AutomationExercise automationExercise = new AutomationExercise();
-    Actions actions = new Actions(Driver.getDriver());
-    Faker faker = new Faker();
+    AutomationExercise automationExercise ;
     SoftAssert softAssert = new SoftAssert();
 
 
     @Test(dataProvider = "daten")
     public void logInUserWithInCorrectEmailAndPassword(String inCorrectEmail, String inCorrectPassword) throws InterruptedException {
+
+        automationExercise= new AutomationExercise();
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -32,7 +32,7 @@ public class TestCase_03_LogInUserWithInCorrectEmailAndPassword extends TestBase
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
 
-        automationExercise.logoAutomationExercise.isDisplayed();
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
 
@@ -47,7 +47,9 @@ public class TestCase_03_LogInUserWithInCorrectEmailAndPassword extends TestBase
 
         Driver.wait(3);
 
-        Assert.assertTrue(automationExercise.yourEmailOrPasswordIsIncorrectText.isDisplayed());
+        softAssert.assertTrue(automationExercise.yourEmailOrPasswordIsIncorrectText.isDisplayed());
+
+        softAssert.assertAll();
 
 
     }

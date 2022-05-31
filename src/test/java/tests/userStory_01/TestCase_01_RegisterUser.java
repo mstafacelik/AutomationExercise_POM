@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class TestCase_01_RegisterUser extends TestBaseRapor {
 
-    AutomationExercise automationExercise = new AutomationExercise();
+    AutomationExercise automationExercise ;
     Actions actions = new Actions(Driver.getDriver());
     Faker faker = new Faker();
     SoftAssert softAssert = new SoftAssert();
@@ -24,6 +24,7 @@ public class TestCase_01_RegisterUser extends TestBaseRapor {
     @Test(priority = 1)
     public void benutzerRegistration() {
 
+        automationExercise= new AutomationExercise();
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -34,7 +35,7 @@ public class TestCase_01_RegisterUser extends TestBaseRapor {
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
 
-        automationExercise.logoAutomationExercise.isDisplayed();
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
 

@@ -10,16 +10,18 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class TestCase_02_LogInUserWithCorrectEmailAndPassword extends TestBaseRapor {
+public class TestCase_10_VerifySubscriptionInHomePage extends TestBaseRapor {
 
     AutomationExercise automationExercise ;
     SoftAssert softAssert = new SoftAssert();
+    Faker faker = new Faker();
+
 
     @Test
-    public void logInUserWithCorrectEmailAndPassword() {
+    public void VerifySubscriptionInHomePage() {
+
 
         automationExercise= new AutomationExercise();
-
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -33,30 +35,18 @@ public class TestCase_02_LogInUserWithCorrectEmailAndPassword extends TestBaseRa
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
+        Driver.clickWithJS(automationExercise.footPage);
+        Driver.wait(2);
 
-        automationExercise.signupLoginLink.click();
-        extentTest.info("Es wurde auf die Schaltfläche „Signup / Login“ geklickt.");
+        softAssert.assertTrue(automationExercise.subscriptionText.isDisplayed());
 
-        automationExercise.loginToYourAccountText.isDisplayed();
-
-        automationExercise.logInEMailAdresseBox
-                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
-                 Keys.TAB + ConfigReader.getProperty("AECorrectPassword"), Keys.TAB, Keys.ENTER);
+        automationExercise.eMailAdresseBoxUnterSubscription
+                .sendKeys(faker.internet().emailAddress(), Keys.TAB, Keys.ENTER);
 
 
-        softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
-
-
-        automationExercise.deleteAccountLink.click();
-
-        softAssert.assertFalse(automationExercise.deleteAccountText.isDisplayed());
-        extentTest.fail("Es wurde festgestellt, dass 'ACCOUNT DELETED!'  nicht sichtbar ist.");
+        // softAssert.assertTrue(automationExercise."You have been successfully subscribed"); ---> nimm locate
 
         softAssert.assertAll();
-
-
-
-
 
 
     }

@@ -2,7 +2,6 @@ package tests.userStory_01;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AutomationExercise;
@@ -10,17 +9,16 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class TestCase_04_LogoutUser extends TestBaseRapor {
-
+public class TestCase_11_VerifySubscriptionInCartPage extends TestBaseRapor {
 
     AutomationExercise automationExercise;
-    SoftAssert softAssert = new SoftAssert();
+    SoftAssert softAssert=new SoftAssert();
+    Faker faker=new Faker();
 
     @Test
-    public void LogoutUser (){
+    public void VerifySubscriptionInCartPage(){
 
         automationExercise= new AutomationExercise();
-
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -35,34 +33,22 @@ public class TestCase_04_LogoutUser extends TestBaseRapor {
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
 
-        automationExercise.signupLoginLink.click();
-        extentTest.info("Es wurde auf die Schaltfläche „Signup / Login“ geklickt.");
+        automationExercise.cartLink.click();
 
-        automationExercise.loginToYourAccountText.isDisplayed();
+        Driver.clickWithJS(automationExercise.footPage);
+        Driver.wait(2);
 
-        automationExercise.logInEMailAdresseBox
-                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
-                        Keys.TAB + ConfigReader.getProperty("AECorrectPassword"), Keys.TAB, Keys.ENTER);
+        softAssert.assertTrue(automationExercise.subscriptionText.isDisplayed());
 
-
-       softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
-
-        Driver.wait(3);
+        automationExercise.eMailAdresseBoxUnterSubscription
+                .sendKeys(faker.internet().emailAddress(), Keys.TAB, Keys.ENTER);
 
 
-        automationExercise.logOutLink.click();
-
-
-        softAssert.assertTrue(automationExercise.signupLoginLink.isDisplayed());
-
-        softAssert.assertAll();
-
-
-
-
+        // softAssert.assertTrue(automationExercise."You have been successfully subscribed"); ---> nimm locate
 
 
 
     }
+
 
 }

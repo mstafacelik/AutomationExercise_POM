@@ -1,8 +1,6 @@
 package tests.userStory_01;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AutomationExercise;
@@ -10,16 +8,15 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class TestCase_02_LogInUserWithCorrectEmailAndPassword extends TestBaseRapor {
+public class TestCase_09_SearchProduct extends TestBaseRapor {
 
     AutomationExercise automationExercise ;
     SoftAssert softAssert = new SoftAssert();
 
     @Test
-    public void logInUserWithCorrectEmailAndPassword() {
+    public void SearchProduct() {
 
         automationExercise= new AutomationExercise();
-
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -33,31 +30,20 @@ public class TestCase_02_LogInUserWithCorrectEmailAndPassword extends TestBaseRa
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
+        automationExercise.productsLink.click();
 
-        automationExercise.signupLoginLink.click();
-        extentTest.info("Es wurde auf die Schaltfläche „Signup / Login“ geklickt.");
+        softAssert.assertTrue(automationExercise.allProductsText.isDisplayed());
 
-        automationExercise.loginToYourAccountText.isDisplayed();
+        automationExercise.searchProductBox
+                .sendKeys(ConfigReader.getProperty("AEProductName"), Keys.TAB, Keys.ENTER);
 
-        automationExercise.logInEMailAdresseBox
-                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
-                 Keys.TAB + ConfigReader.getProperty("AECorrectPassword"), Keys.TAB, Keys.ENTER);
+        Driver.wait(3);
 
+        softAssert.assertTrue(automationExercise.searchedProductsText.isDisplayed());
 
-        softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
-
-
-        automationExercise.deleteAccountLink.click();
-
-        softAssert.assertFalse(automationExercise.deleteAccountText.isDisplayed());
-        extentTest.fail("Es wurde festgestellt, dass 'ACCOUNT DELETED!'  nicht sichtbar ist.");
+        softAssert.assertTrue(automationExercise.poloProductText.isDisplayed());
 
         softAssert.assertAll();
-
-
-
-
-
 
     }
 

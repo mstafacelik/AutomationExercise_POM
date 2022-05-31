@@ -14,16 +14,18 @@ import utilities.TestBaseRapor;
 
 public class TestCase_06_ContactUsForm extends TestBaseRapor {
 
-    AutomationExercise automationExercise = new AutomationExercise();
-    Actions actions = new Actions(Driver.getDriver());
+    AutomationExercise automationExercise;
     SoftAssert softAssert = new SoftAssert();
-    Faker faker = new Faker();
+    Faker faker;
+
 
 
     @Test
     public void ContactUsForm() {
 
 
+        faker= new Faker();
+        automationExercise= new AutomationExercise();
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -34,7 +36,7 @@ public class TestCase_06_ContactUsForm extends TestBaseRapor {
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
 
-        automationExercise.logoAutomationExercise.isDisplayed();
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
         automationExercise.contactUsLink.click();
@@ -65,6 +67,8 @@ public class TestCase_06_ContactUsForm extends TestBaseRapor {
         automationExercise.homeSchaltflächeUnterGetInTouch.click();
 
         softAssert.assertTrue(automationExercise.featuresItemsText.isDisplayed());
+
+        softAssert.assertAll();
 
 
     }

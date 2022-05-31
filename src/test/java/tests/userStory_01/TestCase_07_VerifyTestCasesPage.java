@@ -1,8 +1,8 @@
 package tests.userStory_01;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AutomationExercise;
@@ -10,13 +10,15 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class TestCase_02_LogInUserWithCorrectEmailAndPassword extends TestBaseRapor {
+public class TestCase_07_VerifyTestCasesPage extends TestBaseRapor {
+
 
     AutomationExercise automationExercise ;
     SoftAssert softAssert = new SoftAssert();
 
+
     @Test
-    public void logInUserWithCorrectEmailAndPassword() {
+    public void verifyTestCasesPage() {
 
         automationExercise= new AutomationExercise();
 
@@ -33,33 +35,11 @@ public class TestCase_02_LogInUserWithCorrectEmailAndPassword extends TestBaseRa
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
+        automationExercise.testCasesLink.click();
 
-        automationExercise.signupLoginLink.click();
-        extentTest.info("Es wurde auf die Schaltfläche „Signup / Login“ geklickt.");
-
-        automationExercise.loginToYourAccountText.isDisplayed();
-
-        automationExercise.logInEMailAdresseBox
-                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
-                 Keys.TAB + ConfigReader.getProperty("AECorrectPassword"), Keys.TAB, Keys.ENTER);
-
-
-        softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
-
-
-        automationExercise.deleteAccountLink.click();
-
-        softAssert.assertFalse(automationExercise.deleteAccountText.isDisplayed());
-        extentTest.fail("Es wurde festgestellt, dass 'ACCOUNT DELETED!'  nicht sichtbar ist.");
-
+        softAssert.assertTrue(automationExercise.testCasesText.isDisplayed());
         softAssert.assertAll();
 
 
-
-
-
-
     }
-
-
 }

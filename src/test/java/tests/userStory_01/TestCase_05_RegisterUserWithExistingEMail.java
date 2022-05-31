@@ -13,14 +13,14 @@ import utilities.TestBaseRapor;
 public class TestCase_05_RegisterUserWithExistingEMail extends TestBaseRapor {
 
 
-    AutomationExercise automationExercise = new AutomationExercise();
-    Actions actions = new Actions(Driver.getDriver());
+    AutomationExercise automationExercise;
     Faker faker = new Faker();
     SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void RegisterUserWithExistingEMail() {
 
+        automationExercise= new AutomationExercise();
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -31,7 +31,7 @@ public class TestCase_05_RegisterUserWithExistingEMail extends TestBaseRapor {
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
 
-        automationExercise.logoAutomationExercise.isDisplayed();
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
 
@@ -45,7 +45,8 @@ public class TestCase_05_RegisterUserWithExistingEMail extends TestBaseRapor {
 
         automationExercise.newUserNameBox.sendKeys(faker.name().fullName());
 
-        automationExercise.newUserEMailAdresseBox.sendKeys(ConfigReader.getProperty("AEVorhandenEMailAdresse"));
+        automationExercise.newUserEMailAdresseBox
+                .sendKeys(ConfigReader.getProperty("AEVorhandenEMailAdresse"));
         automationExercise.signUpSchaltfläche.click();
 
         Driver.wait(2);
