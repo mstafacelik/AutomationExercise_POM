@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class AutomationExercise {
 
 
@@ -184,6 +186,10 @@ public class AutomationExercise {
     @FindBy(xpath = "//input[@name='quantity']")
     public WebElement quantityBox;
 
+    @FindBy(xpath = "//label[.='Quantity:']")
+    public WebElement quantityText;
+
+
     @FindBy(xpath = "//button[@class='btn btn-default cart']")
     public WebElement addToChartSchaltfläche;
 
@@ -220,21 +226,53 @@ public class AutomationExercise {
     @FindBy(xpath = "(//a[@class='btn btn-default add-to-cart'])[1]")
     public WebElement addToCartFirstProduct;
 
-     @FindBy (xpath = "//button[@class='btn btn-success close-modal btn-block']")
-     public WebElement continueShoppingSchaltfläche;
+    @FindBy(xpath = "//button[@class='btn btn-success close-modal btn-block']")
+    public WebElement continueShoppingSchaltfläche;
 
     @FindBy(xpath = "(//a[@class='btn btn-default add-to-cart'])[3]")
     public WebElement addToCartSecondProduct;
 
-     @FindBy (xpath = "//U[.='View Cart']")
-     public WebElement viewCartLinkUnterAdded;
+    @FindBy(xpath = "//U[.='View Cart']")
+    public WebElement viewCartLinkUnterAdded;
 
-     @FindBy (xpath = "//div[@class='footer-widget']")
-     public WebElement footPage;
+    @FindBy(xpath = "//div[@class='footer-widget']")
+    public WebElement footPage;
+
+    @FindBy(className = "choose")
+    public List<WebElement> viewProductsList;
 
 
+    @FindBy(className = "disabled")
+    public WebElement quantityProduct;
 
 
+    @FindBy(className = "btn btn-default check_out")
+    public WebElement proceedToCheckOut;
+
+    @FindBy(className = "form-control")
+    public WebElement commentBox;
+
+    @FindBy(className = " btn btn-default check_out")
+    public WebElement placeOrderSchaltfläche;
+
+
+    @FindBy(xpath = "(//p[@class='text-center'])[2]")
+    public WebElement registerLogInUnterCheckOut;
+
+    @FindBy(xpath = "//input[@class='form-control']")
+    public WebElement nameOnCardzurBezahlung;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;
