@@ -13,13 +13,13 @@ import utilities.TestBaseRapor;
 public class TestCase_04_LogoutUser extends TestBaseRapor {
 
 
-    AutomationExercise automationExercise;
+    AutomationExercise automationExercise= new AutomationExercise();
     SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void LogoutUser (){
 
-        automationExercise= new AutomationExercise();
+       // automationExercise= new AutomationExercise();
 
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
@@ -50,7 +50,8 @@ public class TestCase_04_LogoutUser extends TestBaseRapor {
         Driver.wait(3);
 
 
-        automationExercise.logOutLink.click();
+
+        Driver.clickWithJS(automationExercise.logOutLink);
 
 
         softAssert.assertTrue(automationExercise.signupLoginLink.isDisplayed());

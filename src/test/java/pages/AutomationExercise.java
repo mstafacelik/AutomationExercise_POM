@@ -102,7 +102,7 @@ public class AutomationExercise {
     public WebElement accountCreatedText;
 
     @FindBy(linkText = "Continue")
-    public WebElement continueSchaltflächeFürLöschen;
+    public WebElement continueSchaltflächeUnterAccountCreatedText;
 
 
     @FindBy(xpath = "//*[text()=' Logged in as ']")
@@ -246,13 +246,13 @@ public class AutomationExercise {
     public WebElement quantityProduct;
 
 
-    @FindBy(className = "btn btn-default check_out")
-    public WebElement proceedToCheckOut;
+    @FindBy(xpath = "//a[.='Proceed To Checkout']")
+    public WebElement proceedToCheckOutSchaltfläche;
 
     @FindBy(className = "form-control")
     public WebElement commentBox;
 
-    @FindBy(className = " btn btn-default check_out")
+    @FindBy(xpath = "//a[.='Place Order']")
     public WebElement placeOrderSchaltfläche;
 
 
@@ -262,20 +262,26 @@ public class AutomationExercise {
     @FindBy(xpath = "//input[@class='form-control']")
     public WebElement nameOnCardzurBezahlung;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "//i[@class='fa fa-home']")
+    public WebElement homeLinkHomePage;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "(//li[@class='address_firstname address_lastname'])[1]")
+    public WebElement firstAndLastNameUnterAdresseDetails;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "(//li[@class='address_address1 address_address2'])[1]")
+    public WebElement companyUnterAdresseDetails;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "(//li[@class='address_address1 address_address2'])[2]")
+    public WebElement adresseUnterAdresseDetails;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "(//li[@class='address_city address_state_name address_postcode'])[1]")
+    public WebElement cityStateZipCodeUnterAdresseDetails;
+
+    @FindBy(xpath = "(//li[@class='address_country_name'])[1]")
+    public WebElement countryUnterAdresseDetails;
+
+    @FindBy(xpath = "(//li[@class='address_phone'])[1]")
+    public WebElement phoneUnterAdresseDetails;
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;

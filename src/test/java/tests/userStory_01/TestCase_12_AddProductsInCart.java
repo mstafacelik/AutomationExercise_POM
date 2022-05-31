@@ -32,6 +32,7 @@ public class TestCase_12_AddProductsInCart extends TestBaseRapor {
         automationExercise.productsLink.click();
 
         automationExercise.addToCartFirstProduct.click();
+        Driver.wait(2);
         automationExercise.continueShoppingSchaltfläche.click();
         automationExercise.addToCartSecondProduct.click();
 

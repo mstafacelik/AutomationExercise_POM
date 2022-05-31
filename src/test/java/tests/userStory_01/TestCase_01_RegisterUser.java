@@ -92,8 +92,7 @@ public class TestCase_01_RegisterUser extends TestBaseRapor {
         extentTest.info("Das Kontrollkästchen 'Receive special offers from our partners!.");
 
 
-        actions.click(automationExercise.vornameTextBox)
-                .sendKeys(faker.name().firstName(), Keys.TAB)
+        actions.click(automationExercise.vornameTextBox).sendKeys(faker.name().firstName(), Keys.TAB)
                 .sendKeys(faker.name().lastName(), Keys.TAB)
                 .sendKeys(faker.company().name(), Keys.TAB)
                 .sendKeys(faker.address().fullAddress(), Keys.TAB, Keys.TAB)
@@ -117,7 +116,7 @@ public class TestCase_01_RegisterUser extends TestBaseRapor {
         extentTest.info("Es wurde überprüft, dass 'ACCOUNT CREATED!' ist sichtbar.");
 
 
-        automationExercise.continueSchaltflächeFürLöschen.click();
+        automationExercise.continueSchaltflächeUnterAccountCreatedText.click();
         extentTest.info("Es wurde auf die Schaltfläche „Continue“ geklickt.");
 
 
