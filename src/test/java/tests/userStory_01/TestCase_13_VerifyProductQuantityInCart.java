@@ -44,21 +44,21 @@ public class TestCase_13_VerifyProductQuantityInCart extends TestBaseRapor {
 
 
         int intMaxQuantityProduct = random.nextInt(1000);
-        String stringMaxQuantityProduct=Integer.toString(intMaxQuantityProduct);
+        String stringMaxQuantityProduct = Integer.toString(intMaxQuantityProduct);
 
         automationExercise.quantityBox.clear();
-        automationExercise.quantityBox.sendKeys(stringMaxQuantityProduct,Keys.TAB, Keys.ENTER);
+        automationExercise.quantityBox.sendKeys(stringMaxQuantityProduct, Keys.TAB, Keys.ENTER);
         Driver.wait(2);
         automationExercise.viewCartLinkUnterAdded.click();
 
-        String actualQuantity=stringMaxQuantityProduct;
-        String expectedQuantityProduct=automationExercise.quantityProduct.getText();
+        String actualQuantity = stringMaxQuantityProduct;
+        String expectedQuantityProduct = automationExercise.quantityProduct.getText();
 
 
-        softAssert.assertEquals(actualQuantity,expectedQuantityProduct,"Bestellmenge stimmt nicht überein!!!");
+        softAssert.assertEquals(actualQuantity, expectedQuantityProduct, "Bestellmenge stimmt nicht überein!!!");
 
 
-
+        softAssert.assertAll();
 
     }
 

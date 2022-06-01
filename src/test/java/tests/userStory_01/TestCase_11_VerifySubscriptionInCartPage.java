@@ -46,7 +46,7 @@ public class TestCase_11_VerifySubscriptionInCartPage extends TestBaseRapor {
 
         // softAssert.assertTrue(automationExercise."You have been successfully subscribed"); ---> nimm locate
 
-
+        softAssert.assertAll();
 
     }
 

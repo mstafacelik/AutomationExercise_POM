@@ -42,7 +42,7 @@ public class TestCase_12_AddProductsInCart extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.productPriceFirstProduct.isDisplayed());
         softAssert.assertTrue(automationExercise.productPriceSecondProduct.isDisplayed());
 
-
+        softAssert.assertAll();
 
     }
 

@@ -284,6 +284,21 @@ public class AutomationExercise {
     public WebElement phoneUnterAdresseDetails;
 
     // @FindBy (xpath = "")
+    // public WebElement YourOrderHasBeenPlacedSuccessfullyText;
+
+    @FindBy(className = "cart_quantity_delete")
+    public WebElement xSchaltflächeUnterProceedToCheckOut;
+
+    @FindBy(className = "active")
+    public WebElement shoppingCartText;
+
+    @FindBy(xpath = "//b[.='Cart is empty!']")
+    public WebElement cartIsEmptyText;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
     // public WebElement xxxxx;
 
     // @FindBy (xpath = "")
@@ -292,5 +307,7 @@ public class AutomationExercise {
     // @FindBy (xpath = "")
     // public WebElement xxxxx;
 
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
 
 }
