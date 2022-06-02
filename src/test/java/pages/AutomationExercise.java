@@ -295,6 +295,52 @@ public class AutomationExercise {
     @FindBy(xpath = "//b[.='Cart is empty!']")
     public WebElement cartIsEmptyText;
 
+    @FindBy(xpath = "//div[@class='panel panel-default']//i")
+    public List<WebElement> kategorienList;
+
+    @FindBy(xpath = "//div[@id='Women']//div[@class='panel-body']//a")
+    public List<WebElement> anyCategoryLinkUnderWomenCategory;
+
+    @FindBy(xpath = "//div[@id='Men']//div[@class='panel-body']//a")
+    public List<WebElement> anyCategoryLinkUnderMenCategory;
+
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    public WebElement womenDressTopsSaareeTitleText;
+
+
+    @FindBy(xpath = "//ul[@class='nav nav-pills nav-stacked']//a")
+    public List<WebElement> brandsList;
+
+    @FindBy(xpath = "(//a[.='Dress '])[1]")
+    public WebElement dressLink;
+
+    @FindBy(xpath = "//h2[.='Women - Dress Products']")
+    public WebElement womenDressProductsText;
+
+    @FindBy(xpath = "(//span[@class='badge pull-right'])[1]")
+    public WebElement categoryWomenLink;
+
+    @FindBy(xpath = "(//span[@class='badge pull-right'])[2]")
+    public WebElement categoryMenLink;
+
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    public WebElement menTshirtJeansProductTitleText;
+
+    @FindBy(xpath = "//a[.='Tshirts ']")
+    public WebElement tshirtsMenLink;
+
+    @FindBy(xpath = "//h2[text()='Women - Tops Products']")
+    public WebElement womenTopsProductsText;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
     // @FindBy (xpath = "")
     // public WebElement xxxxx;
 
