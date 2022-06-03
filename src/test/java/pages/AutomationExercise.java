@@ -332,8 +332,16 @@ public class AutomationExercise {
     @FindBy(xpath = "//h2[text()='Women - Tops Products']")
     public WebElement womenTopsProductsText;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+     @FindBy (xpath = "//h2[@class='title text-center']")
+     public WebElement brandsText;
+
+    @FindBy(xpath = "//div[@class='col-sm-4']//div[@class='single-products']")
+    public List<WebElement> brandAllProductsList;
+
+
+    @FindBy(xpath = "//a[@style='color: brown;']")
+    public List<WebElement> viewProductLinkList;
+
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;

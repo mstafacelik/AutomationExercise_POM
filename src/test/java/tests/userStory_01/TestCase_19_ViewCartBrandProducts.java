@@ -32,7 +32,6 @@ public class TestCase_19_ViewCartBrandProducts extends TestBaseRapor {
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
 
-
         Driver.getDriver();
         extentTest.info("Browser wurde gestartet.");
 
@@ -56,33 +55,30 @@ public class TestCase_19_ViewCartBrandProducts extends TestBaseRapor {
         }
 
 
-        automationExercise.brandsList.get(2).click();
+        int brandsSize = automationExercise.brandsList.size();
 
 
 
+        for (int i = 0; i < 3; i++) {
 
-        int productsSize = automationExercise.brandsList.size();
-        int randomProduct = random.nextInt(productsSize);
-        automationExercise.brandsList.get(randomProduct).click();
+            int randomBrands = random.nextInt(brandsSize);
+            Driver.clickWithJS(automationExercise.brandsList.get(randomBrands));
+            Driver.wait(2);
+            softAssert.assertTrue(automationExercise.brandsText.isDisplayed());
 
+            for (WebElement w : automationExercise.brandAllProductsList) {
 
-
-        Driver.wait(10);
-
-
-
-
-
+                softAssert.assertTrue(w.isDisplayed());
+                System.out.println(w.getText());
 
 
+            }
+            System.out.println("===========#Zweilmal wurden brands üperprüft!#==================");
 
-
-
-
-
-
-
+            i++;
+        }
 
         softAssert.assertAll();
+
     }
 }
