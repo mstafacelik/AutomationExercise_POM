@@ -53,16 +53,15 @@ public class TestCase_16_PlaceOrderLogInBeforeCheckOut extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
 
         int productsSize = automationExercise.viewProductsList.size();
-        int randomProduct = random.nextInt(productsSize);
+
 
         for (int i = 0; i < 3; i++) {
 
+            int randomProduct = random.nextInt(productsSize);
             automationExercise.viewProductsList.get(randomProduct).click();
             Driver.waitAndClick(automationExercise.addToChartSchaltfläche);
             Driver.waitAndClick(automationExercise.continueShoppingSchaltfläche);
             Driver.waitAndClick(automationExercise.homeLinkHomePage);
-
-            i++;
 
         }
 
@@ -84,28 +83,28 @@ public class TestCase_16_PlaceOrderLogInBeforeCheckOut extends TestBaseRapor {
 
 
         String actulFullName = "Mr." + " " + firstNameFaker + " " + lastNameFaker;
-        String expectedFullName = automationExercise.firstAndLastNameUnterAdresseDetails.getText();
+        String expectedFullName = automationExercise.firstAndLastNameUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actulFullName, expectedFullName);
 
         String actulCompany = companyFaker;
-        String expectedCompany = automationExercise.companyUnterAdresseDetails.getText();
+        String expectedCompany = automationExercise.companyUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actulCompany, expectedCompany);
 
         String actualAdresse = adresseFaker;
-        String expectedAdresse = automationExercise.adresseUnterAdresseDetails.getText();
+        String expectedAdresse = automationExercise.adresseUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actualAdresse, expectedAdresse);
 
 
         String actualCountry = country;
-        String expectedCountry = automationExercise.countryUnterAdresseDetails.getText();
+        String expectedCountry = automationExercise.countryUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actualCountry, expectedCountry);
 
         String actualCityStateZipCode = cityFaker + " " + stateFaker + " " + zipCode;
-        String expectedCityStateZipCode = automationExercise.cityStateZipCodeUnterAdresseDetails.getText();
+        String expectedCityStateZipCode = automationExercise.cityStateZipCodeUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actualCityStateZipCode, expectedCityStateZipCode);
 
         String actualPhoneNummer = phoneFaker;
-        String expectedPhoneNummer = automationExercise.phoneUnterAdresseDetails.getText();
+        String expectedPhoneNummer = automationExercise.phoneUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actualPhoneNummer, expectedPhoneNummer);
 
 

@@ -59,7 +59,7 @@ public class TestCase_19_ViewCartBrandProducts extends TestBaseRapor {
 
 
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
 
             int randomBrands = random.nextInt(brandsSize);
             Driver.clickWithJS(automationExercise.brandsList.get(randomBrands));
@@ -75,7 +75,6 @@ public class TestCase_19_ViewCartBrandProducts extends TestBaseRapor {
             }
             System.out.println("===========#Zweilmal wurden brands üperprüft!#==================");
 
-            i++;
         }
 
         softAssert.assertAll();

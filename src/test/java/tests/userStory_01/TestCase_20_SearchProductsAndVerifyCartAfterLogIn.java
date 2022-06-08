@@ -74,8 +74,25 @@ public class TestCase_20_SearchProductsAndVerifyCartAfterLogIn extends TestBaseR
 
         automationExercise.cartLink.click();
 
+        for (WebElement w : automationExercise.brandAllProductsList) {
+            System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
+            softAssert.assertTrue(w.getText().toUpperCase().contains(searchedProduct.toUpperCase()));
+            softAssert.assertTrue(w.isDisplayed());
+
+        }
+
+        automationExercise.signupLoginLink.click();
+        automationExercise.logInEMailAdresseBox
+                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
+                        Keys.TAB,ConfigReader.getProperty("AECorrectPassword"),Keys.TAB,Keys.ENTER);
 
 
+        for (WebElement w : automationExercise.brandAllProductsList) {
+            System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
+            softAssert.assertTrue(w.getText().toUpperCase().contains(searchedProduct.toUpperCase()));
+            softAssert.assertTrue(w.isDisplayed());
+
+        }
 
         softAssert.assertAll();
     }

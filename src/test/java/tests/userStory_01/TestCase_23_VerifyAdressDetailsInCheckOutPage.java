@@ -3,6 +3,7 @@ package tests.userStory_01;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AutomationExercise;
@@ -12,9 +13,7 @@ import utilities.TestBaseRapor;
 
 import java.util.Random;
 
-public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor {
-
-
+public class TestCase_23_VerifyAdressDetailsInCheckOutPage extends TestBaseRapor {
     AutomationExercise automationExercise;
     SoftAssert softAssert;
     Random random;
@@ -22,14 +21,13 @@ public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor 
     Actions actions;
 
     @Test
-    public void placeOrderRegisterBeforeCheckout() {
+    public void verifyAdressDetailsInCheckOutPage() {
 
         automationExercise = new AutomationExercise();
         softAssert = new SoftAssert();
         random = new Random();
         faker = new Faker();
         actions = new Actions(Driver.getDriver());
-
 
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
@@ -40,21 +38,16 @@ public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor 
         Driver.getDriver().get(ConfigReader.getProperty("AutomationExerciseUrl"));
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
-
-        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
-        extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
-
-
         automationExercise.signupLoginLink.click();
-
-        automationExercise.newUserNameBox.sendKeys(faker.name().fullName(),
-                Keys.TAB, faker.internet().emailAddress(), Keys.TAB, Keys.ENTER);
+        automationExercise.newUserNameBox
+                .sendKeys(faker.name().fullName(),
+                        Keys.TAB, faker.internet().emailAddress(), Keys.TAB, Keys.ENTER);
 
         automationExercise.radioTitleMr.click();
         automationExercise.paswordBoxZumKontoErstellen.sendKeys(faker.internet().password());
-        Driver.selectByIndex(automationExercise.geburtsdatumTagSelect, 15);
-        Driver.selectByIndex(automationExercise.geburtsdatumMonatSelect, 9);
-        Driver.selectByValue(automationExercise.geburtsdatumJahrSelect, "1990");
+        Driver.selectByIndex(automationExercise.geburtsdatumTagSelect, 16);
+        Driver.selectByIndex(automationExercise.geburtsdatumMonatSelect, 10);
+        Driver.selectByValue(automationExercise.geburtsdatumJahrSelect, "1991");
         extentTest.info("zur Registration wurde der Titel angekruezt und Passwort und," +
                 " Geburtsdatum wurden eingegeben.");
 
@@ -67,6 +60,7 @@ public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor 
         String cityFaker = faker.address().city();
         String zipCode = faker.address().zipCode();
         String phoneFaker = faker.phoneNumber().phoneNumber();
+
 
         actions.click(automationExercise.vornameTextBox)
                 .sendKeys(firstNameFaker, Keys.TAB, lastNameFaker, Keys.TAB, companyFaker, Keys.TAB, adresseFaker,
@@ -85,15 +79,13 @@ public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor 
         automationExercise.accountCreatedText.isDisplayed();
         extentTest.info("Es wurde überprüft, dass 'ACCOUNT CREATED!' ist sichtbar.");
 
-
         automationExercise.continueSchaltflächeUnterAccountCreatedText.click();
         extentTest.info("Es wurde auf die Schaltfläche „Continue“ geklickt.");
 
         Driver.wait(2);
-
         softAssert.assertTrue(automationExercise.loggedInAsText.isDisplayed());
 
-        int productsSize = automationExercise.viewProductsList.size();
+        int productsSize = automationExercise.brandAllProductsList.size();
 
 
         for (int i = 0; i < 3; i++) {
@@ -104,12 +96,10 @@ public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor 
             Driver.waitAndClick(automationExercise.continueShoppingSchaltfläche);
             Driver.waitAndClick(automationExercise.homeLinkHomePage);
 
-
         }
 
-
         automationExercise.cartLink.click();
-
+        Driver.waitForVisibility(automationExercise.proceedToCheckOutSchaltfläche, 5);
         softAssert.assertTrue(automationExercise.proceedToCheckOutSchaltfläche.isDisplayed());
 
         automationExercise.proceedToCheckOutSchaltfläche.click();
@@ -139,42 +129,43 @@ public class TestCase_15_PlaceOrderRegisterBeforeCheckout extends TestBaseRapor 
         String expectedPhoneNummer = automationExercise.phoneUnterAdresseDetailsVonDeliveryAdresse.getText();
         softAssert.assertEquals(actualPhoneNummer, expectedPhoneNummer);
 
+        //=======================
 
-        automationExercise.commentBox
-                .sendKeys(ConfigReader.getProperty("AECommentWhileCheckout"), Keys.TAB, Keys.ENTER);
+        String actulFullName2 = "Mr." + " " + firstNameFaker + " " + lastNameFaker;
+        String expectedFullName2 = automationExercise.firstAndLastNameUnterAdresseDetailsVonBilligAdresse.getText();
+        softAssert.assertEquals(actulFullName, expectedFullName);
 
+        String actulCompany2 = companyFaker;
+        String expectedCompany2 = automationExercise.companyUnterAdresseDetailsVonBilligAdresse.getText();
+        softAssert.assertEquals(actulCompany, expectedCompany);
 
-        String creditCardnummer = faker.finance().creditCard();
-        String creditCardnummerOhneMinus = creditCardnummer.replaceAll("-", "");
-
-        String cvc = random.nextInt(99, 999) + "";
-
-        automationExercise.nameOnCardzurBezahlung
-                .sendKeys((CharSequence) faker.name().fullName(),
-                        Keys.TAB, creditCardnummerOhneMinus,
-                        Keys.TAB, cvc,
-                        Keys.TAB, "02",
-                        Keys.TAB, "2025",
-                        Keys.TAB, Keys.ENTER);
+        String actualAdresse2 = adresseFaker;
+        String expectedAdresse2 = automationExercise.adresseUnterAdresseDetailsVonBilligAdresse.getText();
+        softAssert.assertEquals(actualAdresse, expectedAdresse);
 
 
-        // softAssert.assertTrue(automationExercise.YourOrderHasBeenPlacedSuccessfullyText.isDisplayed());
-        //  YourOrderHasBeenPlacedSuccessfullyText -->>nimm locate
+        String actualCountry2 = country;
+        String expectedCountry2 = automationExercise.countryUnterAdresseDetailsVonDeliveryAdresse.getText();
+        softAssert.assertEquals(actualCountry, expectedCountry);
+
+        String actualCityStateZipCode2 = cityFaker + " " + stateFaker + " " + zipCode;
+        String expectedCityStateZipCode2 = automationExercise.cityStateZipCodeUnterAdresseDetailsVonBilligAdresse.getText();
+        softAssert.assertEquals(actualCityStateZipCode, expectedCityStateZipCode);
+
+        String actualPhoneNummer2 = phoneFaker;
+        String expectedPhoneNummer2 = automationExercise.phoneUnterAdresseDetailsVonBilligAdresse.getText();
+        softAssert.assertEquals(actualPhoneNummer, expectedPhoneNummer);
+
 
         automationExercise.deleteAccountLink.click();
-        extentTest.info("Es wurde auf die Schaltfläche „Delete Account“ geklickt.");
-
 
         softAssert.assertFalse(automationExercise.deleteAccountText.isDisplayed());
         extentTest.fail("Es wurde festgestellt, dass 'ACCOUNT DELETED!'  nicht sichtbar ist.");
-
-        softAssert.assertFalse(automationExercise.optionsButton.isDisplayed());
-        extentTest.fail("Es wurde festgestellt, dass es keine Schaltfläche „Continue“ gibt." +
-                "Deswegen  konnte drauf nicht geklickt werden.");
 
         softAssert.assertAll();
 
 
     }
+
 
 }

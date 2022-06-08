@@ -43,16 +43,16 @@ public class TestCase_17_RemoveProductsFromCart extends TestBaseRapor {
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
         int productsSize = automationExercise.viewProductsList.size();
-        int randomProduct = random.nextInt(productsSize);
+
 
         for (int i = 0; i < 3; i++) {
 
+            int randomProduct = random.nextInt(productsSize);
             automationExercise.viewProductsList.get(randomProduct).click();
             Driver.waitAndClick(automationExercise.addToChartSchaltfläche);
             Driver.waitAndClick(automationExercise.continueShoppingSchaltfläche);
             Driver.waitAndClick(automationExercise.homeLinkHomePage);
 
-            i++;
 
         }
 

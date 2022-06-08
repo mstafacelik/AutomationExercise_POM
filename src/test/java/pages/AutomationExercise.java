@@ -266,22 +266,40 @@ public class AutomationExercise {
     public WebElement homeLinkHomePage;
 
     @FindBy(xpath = "(//li[@class='address_firstname address_lastname'])[1]")
-    public WebElement firstAndLastNameUnterAdresseDetails;
+    public WebElement firstAndLastNameUnterAdresseDetailsVonDeliveryAdresse;
+
+    @FindBy(xpath = "(//li[@class='address_firstname address_lastname'])[2]")
+    public WebElement firstAndLastNameUnterAdresseDetailsVonBilligAdresse;
 
     @FindBy(xpath = "(//li[@class='address_address1 address_address2'])[1]")
-    public WebElement companyUnterAdresseDetails;
+    public WebElement companyUnterAdresseDetailsVonDeliveryAdresse;
+
+    @FindBy(xpath = "(//li[@class='address_address1 address_address2'])[4]")
+    public WebElement companyUnterAdresseDetailsVonBilligAdresse;
 
     @FindBy(xpath = "(//li[@class='address_address1 address_address2'])[2]")
-    public WebElement adresseUnterAdresseDetails;
+    public WebElement adresseUnterAdresseDetailsVonDeliveryAdresse;
+
+    @FindBy(xpath = "(//li[@class='address_address1 address_address2'])[5]")
+    public WebElement adresseUnterAdresseDetailsVonBilligAdresse;
 
     @FindBy(xpath = "(//li[@class='address_city address_state_name address_postcode'])[1]")
-    public WebElement cityStateZipCodeUnterAdresseDetails;
+    public WebElement cityStateZipCodeUnterAdresseDetailsVonDeliveryAdresse;
+
+    @FindBy(xpath = "(//li[@class='address_city address_state_name address_postcode'])[2]")
+    public WebElement cityStateZipCodeUnterAdresseDetailsVonBilligAdresse;
 
     @FindBy(xpath = "(//li[@class='address_country_name'])[1]")
-    public WebElement countryUnterAdresseDetails;
+    public WebElement countryUnterAdresseDetailsVonDeliveryAdresse;
+
+    @FindBy(xpath = "(//li[@class='address_country_name'])[2]")
+    public WebElement countryUnterAdresseDetailsVonBilligAdresse;
 
     @FindBy(xpath = "(//li[@class='address_phone'])[1]")
-    public WebElement phoneUnterAdresseDetails;
+    public WebElement phoneUnterAdresseDetailsVonDeliveryAdresse;
+
+    @FindBy(xpath = "(//li[@class='address_phone'])[2]")
+    public WebElement phoneUnterAdresseDetailsVonBilligAdresse;
 
     // @FindBy (xpath = "")
     // public WebElement YourOrderHasBeenPlacedSuccessfullyText;
@@ -332,8 +350,8 @@ public class AutomationExercise {
     @FindBy(xpath = "//h2[text()='Women - Tops Products']")
     public WebElement womenTopsProductsText;
 
-     @FindBy (xpath = "//h2[@class='title text-center']")
-     public WebElement brandsText;
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    public WebElement brandsText;
 
     @FindBy(xpath = "//div[@class='col-sm-4']//div[@class='single-products']")
     public List<WebElement> brandAllProductsList;
@@ -343,20 +361,43 @@ public class AutomationExercise {
     public List<WebElement> viewProductLinkList;
 
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(linkText = "Write Your Review")
+    public WebElement writeYourReviewText;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "//input[@type='text']")
+    public WebElement nameBoxUnterWriteYourReview;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "//span[text()='Thank you for your review.']")
+    public WebElement verifySuccessMessageThankYouForYourReview;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "(//h2[@class='title text-center'])[2]")
+    public WebElement recommendedItemsText;
 
-    // @FindBy (xpath = "")
-    // public WebElement xxxxx;
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']")
+    public List<WebElement> recommendedProductsList;
+
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']//a[@data-product-id='1']")
+    public WebElement recommendedProduct1;
+
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']//a[@data-product-id='2']")
+    public WebElement recommendedProduct2;
+
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']//a[@data-product-id='3']")
+    public WebElement recommendedProduct3;
+
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']//a[@data-product-id='4']")
+    public WebElement recommendedProduct4;
+
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']//a[@data-product-id='5']")
+    public WebElement recommendedProduct5;
+
+    @FindBy(xpath = "//div[@class='carousel-inner']//div[@class='col-sm-4']//a[@data-product-id='6']")
+    public WebElement recommendedProduct6;
+
+    @FindBy(xpath = "//tbody//tr")
+    public WebElement recommendedProductInCart;
+
+
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;
