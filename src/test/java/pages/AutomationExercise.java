@@ -397,12 +397,26 @@ public class AutomationExercise {
     @FindBy(xpath = "//tbody//tr")
     public WebElement recommendedProductInCart;
 
+    @FindBy(linkText = "Download Invoice")
+    public WebElement downloadInvoiceSchaltfläche;
 
+    @FindBy(xpath = "//a[@class='btn btn-primary']")
+    public WebElement continueSchaltflächeUnterOrderPlacedText;
+
+    @FindBy(xpath = "//i[@class='fa fa-angle-up']")
+    public WebElement pfeilUntenRechts;
+
+     @FindBy (xpath = "//*[.='Full-Fledged practice website for Automation Engineers']")
+     public WebElement fullFledgedText;
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;
+
+    // @FindBy (xpath = "")
+    // public WebElement xxxxx;
+
 
 }

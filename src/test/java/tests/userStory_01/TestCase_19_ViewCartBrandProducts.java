@@ -39,6 +39,9 @@ public class TestCase_19_ViewCartBrandProducts extends TestBaseRapor {
         Driver.getDriver().get(ConfigReader.getProperty("AutomationExerciseUrl"));
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
+        extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
+
         automationExercise.productsLink.click();
 
 

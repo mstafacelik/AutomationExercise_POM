@@ -1,19 +1,19 @@
 package tests.userStory_01;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AutomationExercise;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
 import java.util.Random;
 
-public class TestCase_21_AddReviewOnProduct extends TestBaseRapor {
+public class TestCase_25_VerifiyScrollUpUsingArrowButtonAndScrollDownFunctionality extends TestBaseRapor {
+
 
     AutomationExercise automationExercise;
     SoftAssert softAssert;
@@ -22,8 +22,7 @@ public class TestCase_21_AddReviewOnProduct extends TestBaseRapor {
     Actions actions;
 
     @Test
-    public void addReviewOnProduct() {
-
+    public void verifiyScrollUpUsingArrowButtonAndScrollDownFunctionality() {
         automationExercise = new AutomationExercise();
         softAssert = new SoftAssert();
         random = new Random();
@@ -42,25 +41,22 @@ public class TestCase_21_AddReviewOnProduct extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
-        automationExercise.productsLink.click();
-
-        Driver.waitForVisibility(automationExercise.allProductsText, 5);
-        automationExercise.allProductsText.isDisplayed();
-
-
-        Driver.wait(3);
-        Driver.clickWithJS(automationExercise.viewProductLinkFirstProduct);
-        Driver.clickWithJS(automationExercise.nameBoxUnterWriteYourReview);
-
-        automationExercise.nameBoxUnterWriteYourReview.sendKeys(faker.name().fullName(), Keys.TAB, faker.internet().emailAddress(),
-                Keys.TAB, ConfigReader.getProperty("AEReview"), Keys.TAB, Keys.ENTER);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        //Scrollen Sie nach unten bis zum Ende der Seite
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 
 
-        Driver.waitForVisibility(automationExercise.verifySuccessMessageThankYouForYourReview,5);
-        softAssert.assertTrue(automationExercise.verifySuccessMessageThankYouForYourReview.isDisplayed());
+        softAssert.assertTrue(automationExercise.subscriptionText.isDisplayed());
+
+        automationExercise.pfeilUntenRechts.click();
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
+
+
+        softAssert.assertTrue(automationExercise.fullFledgedText.isDisplayed());
 
 
         softAssert.assertAll();
-    }
 
+
+    }
 }

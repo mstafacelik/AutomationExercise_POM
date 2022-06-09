@@ -42,6 +42,9 @@ public class TestCase_18_ViewCategoryProducts extends TestBaseRapor {
         Driver.getDriver().get(ConfigReader.getProperty("AutomationExerciseUrl"));
         extentTest.info("Es wurde zur URL „http://automationexercise.com“ navigiert.");
 
+        softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
+        extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
+
 
         for (WebElement w : automationExercise.kategorienList) {
             System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
