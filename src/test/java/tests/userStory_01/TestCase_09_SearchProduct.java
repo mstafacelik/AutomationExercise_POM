@@ -1,6 +1,7 @@
 package tests.userStory_01;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AutomationExercise;
@@ -8,15 +9,17 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
+import java.util.Locale;
+
 public class TestCase_09_SearchProduct extends TestBaseRapor {
 
-    AutomationExercise automationExercise ;
+    AutomationExercise automationExercise;
     SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void SearchProduct() {
 
-        automationExercise= new AutomationExercise();
+        automationExercise = new AutomationExercise();
         extentTest = extentReports.createTest("Test von AutomationExercise");
 
         Driver.getDriver();
@@ -35,13 +38,23 @@ public class TestCase_09_SearchProduct extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.allProductsText.isDisplayed());
 
         automationExercise.searchProductBox
-                .sendKeys(ConfigReader.getProperty("AEProductName"), Keys.TAB, Keys.ENTER);
+                .sendKeys("Tshirt", Keys.TAB, Keys.ENTER);
 
         Driver.wait(3);
 
-        softAssert.assertTrue(automationExercise.searchedProductsText.isDisplayed());
+        int expectedZahlAllProductList = 0;
 
-        softAssert.assertTrue(automationExercise.poloProductText.isDisplayed());
+        for (WebElement w : automationExercise.brandAllProductsList) {
+
+            if (w.getText().contains("Tshirt") || w.getText().contains("T-Shirt") || w.getText().contains("T SHIRT")) {
+
+                expectedZahlAllProductList++;
+            }
+        }
+
+
+        int actualZahlinErgebnisseite = automationExercise.productPageSearchResultList.size();
+        softAssert.assertEquals(actualZahlinErgebnisseite, expectedZahlAllProductList);
 
         softAssert.assertAll();
 

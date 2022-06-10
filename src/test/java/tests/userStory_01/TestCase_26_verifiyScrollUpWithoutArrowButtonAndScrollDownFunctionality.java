@@ -2,6 +2,7 @@ package tests.userStory_01;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -42,13 +43,22 @@ public class TestCase_26_verifiyScrollUpWithoutArrowButtonAndScrollDownFunctiona
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
         //Scrollen Sie nach unten bis zum Ende der Seite
-        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+       JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+       js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+
+       // Alternative Scrollen bis zum Ende der Seite
+       // actions.sendKeys(Keys.END).perform();
+
         softAssert.assertTrue(automationExercise.subscriptionText.isDisplayed());
 
         // zum Seitenanfang scrollen
         js.executeScript(" window.scrollTo(0, 0);");
+
+        // Alternative Scrollen zum Seitenanfang
+        // actions.sendKeys(Keys.HOME).perform();
+
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         softAssert.assertTrue(automationExercise.fullFledgedText.isDisplayed());
 

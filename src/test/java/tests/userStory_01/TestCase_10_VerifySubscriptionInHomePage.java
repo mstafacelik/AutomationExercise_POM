@@ -15,6 +15,7 @@ public class TestCase_10_VerifySubscriptionInHomePage extends TestBaseRapor {
     AutomationExercise automationExercise ;
     SoftAssert softAssert = new SoftAssert();
     Faker faker = new Faker();
+    Actions actions=new Actions(Driver.getDriver());
 
 
     @Test
@@ -35,16 +36,20 @@ public class TestCase_10_VerifySubscriptionInHomePage extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
-        Driver.clickWithJS(automationExercise.footPage);
-        Driver.wait(2);
 
+         Driver.clickWithJS(automationExercise.footPage);
+
+        // Alternative Scrollen zum Ende der Seite
+        // actions.sendKeys(Keys.END).perform();
+
+
+        Driver.waitForVisibility(automationExercise.subscriptionText,5);
         softAssert.assertTrue(automationExercise.subscriptionText.isDisplayed());
 
         automationExercise.eMailAdresseBoxUnterSubscription
                 .sendKeys(faker.internet().emailAddress(), Keys.TAB, Keys.ENTER);
 
-
-        // softAssert.assertTrue(automationExercise."You have been successfully subscribed"); ---> nimm locate
+        softAssert.assertTrue(automationExercise.youHaveBeenSuccessfullySubscribedText.isDisplayed());
 
         softAssert.assertAll();
 

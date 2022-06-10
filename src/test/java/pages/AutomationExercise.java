@@ -171,8 +171,22 @@ public class AutomationExercise {
     @FindBy(xpath = "(//p[.='Blue Top'])[1]")
     public WebElement productNameFirstProduct;
 
+    @FindBy(xpath = "//a[.='Blue Top']")
+    public WebElement productNameFirstProductInCartPage;
+
+    @FindBy(xpath = "//*[@id='product-1']/td[4]//button[.='1']")
+    public WebElement quantityFirstProduktInCartPage;
+
+
     @FindBy(xpath = "(//p[.='Men Tshirt'])[1]")
     public WebElement productNameSecondProduct;
+
+
+    @FindBy(xpath = "//a[.='Men Tshirt']")
+    public WebElement productNameSecondProductInCartPage;
+
+    @FindBy(xpath = "//*[@id='product-2']/td[4]//button[.='1']")
+    public WebElement quantitySecondProduktInCartPage;
 
     @FindBy(xpath = "//p[.='Category: Women > Tops']")
     public WebElement productCategoryFirstProduct;
@@ -180,8 +194,16 @@ public class AutomationExercise {
     @FindBy(xpath = "(//h2[.='Rs. 500'])[1]")
     public WebElement productPriceFirstProduct;
 
+    @FindBy(xpath = " (//p[@class='cart_total_price'])[1]")
+    public WebElement productPriceFirstProductTotal;
+
+
     @FindBy(xpath = "(//h2[.='Rs. 400'])[1]")
     public WebElement productPriceSecondProduct;
+
+    @FindBy(xpath = "(//p[@class='cart_total_price'])[2]")
+    public WebElement productPriceSecondProductTotal;
+
 
     @FindBy(xpath = "//input[@name='quantity']")
     public WebElement quantityBox;
@@ -242,8 +264,8 @@ public class AutomationExercise {
     public List<WebElement> viewProductsList;
 
 
-    @FindBy(className = "disabled")
-    public WebElement quantityProduct;
+    @FindBy(xpath = "//*[@id='product-1']/td[4]//button[.='4']")
+    public WebElement quantityProductInCartPage;
 
 
     @FindBy(xpath = "//a[.='Proceed To Checkout']")
@@ -304,6 +326,10 @@ public class AutomationExercise {
     // @FindBy (xpath = "")
     // public WebElement YourOrderHasBeenPlacedSuccessfullyText;
 
+    @FindBy(xpath = "//div[@id='success-subscribe']")
+    public WebElement youHaveBeenSuccessfullySubscribedText;
+
+
     @FindBy(className = "cart_quantity_delete")
     public WebElement xSchaltflächeUnterProceedToCheckOut;
 
@@ -357,6 +383,10 @@ public class AutomationExercise {
     public List<WebElement> brandAllProductsList;
 
 
+    @FindBy(xpath = "//div[@class='product-image-wrapper']")
+    public List<WebElement> productPageSearchResultList;
+
+
     @FindBy(xpath = "//a[@style='color: brown;']")
     public List<WebElement> viewProductLinkList;
 
@@ -406,8 +436,8 @@ public class AutomationExercise {
     @FindBy(xpath = "//i[@class='fa fa-angle-up']")
     public WebElement pfeilUntenRechts;
 
-     @FindBy (xpath = "//*[.='Full-Fledged practice website for Automation Engineers']")
-     public WebElement fullFledgedText;
+    @FindBy(xpath = "//*[.='Full-Fledged practice website for Automation Engineers']")
+    public WebElement fullFledgedText;
 
     // @FindBy (xpath = "")
     // public WebElement xxxxx;

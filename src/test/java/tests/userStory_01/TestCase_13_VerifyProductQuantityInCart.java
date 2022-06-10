@@ -36,27 +36,20 @@ public class TestCase_13_VerifyProductQuantityInCart extends TestBaseRapor {
         softAssert.assertTrue(automationExercise.logoAutomationExercise.isDisplayed());
         extentTest.info("Es wurde überprüft, dass die Startseite erfolgreich sichtbar ist.");
 
-        int productsSize = automationExercise.viewProductsList.size();
-        int randomProduct = random.nextInt(productsSize);
 
-        automationExercise.viewProductsList.get(randomProduct).click();
+        automationExercise.viewProductsList.get(0).click();
         automationExercise.quantityText.isDisplayed();
 
 
-        int intMaxQuantityProduct = random.nextInt(1000);
-        String stringMaxQuantityProduct = Integer.toString(intMaxQuantityProduct);
-
         automationExercise.quantityBox.clear();
-        automationExercise.quantityBox.sendKeys(stringMaxQuantityProduct, Keys.TAB, Keys.ENTER);
-        Driver.wait(2);
+        automationExercise.quantityBox.sendKeys(ConfigReader.getProperty("AEProductQuantity"), Keys.TAB, Keys.ENTER);
+
+        Driver.waitForVisibility(automationExercise.viewCartLinkUnterAdded,10);
         automationExercise.viewCartLinkUnterAdded.click();
 
-        String actualQuantity = stringMaxQuantityProduct;
-        String expectedQuantityProduct = automationExercise.quantityProduct.getText();
-
-
+        int actualQuantity = 4;
+        int expectedQuantityProduct =Integer.parseInt(automationExercise.quantityProductInCartPage.getText());
         softAssert.assertEquals(actualQuantity, expectedQuantityProduct, "Bestellmenge stimmt nicht überein!!!");
-
 
         softAssert.assertAll();
 

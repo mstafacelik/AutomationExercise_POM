@@ -36,15 +36,18 @@ public class TestCase_11_VerifySubscriptionInCartPage extends TestBaseRapor {
         automationExercise.cartLink.click();
 
         Driver.clickWithJS(automationExercise.footPage);
-        Driver.wait(2);
+        // Alternative Scrollen zum Ende der Seite
+        // actions.sendKeys(Keys.END).perform();
 
+
+        Driver.waitForVisibility(automationExercise.subscriptionText,5);
         softAssert.assertTrue(automationExercise.subscriptionText.isDisplayed());
 
         automationExercise.eMailAdresseBoxUnterSubscription
                 .sendKeys(faker.internet().emailAddress(), Keys.TAB, Keys.ENTER);
 
 
-        // softAssert.assertTrue(automationExercise."You have been successfully subscribed"); ---> nimm locate
+        softAssert.assertTrue(automationExercise.youHaveBeenSuccessfullySubscribedText.isDisplayed());
 
         softAssert.assertAll();
 
