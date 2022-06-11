@@ -119,13 +119,13 @@ public class TestCase_14_PlaceOrderRegisterWhileCheckout extends TestBaseRapor {
         Driver.wait(3);
 
 
-        String actulFullName = "Mr." + " " + firstNameFaker + " " + lastNameFaker;
+        String actualFullName = "Mr." + " " + firstNameFaker + " " + lastNameFaker;
         String expectedFullName = automationExercise.firstAndLastNameUnterAdresseDetailsVonDeliveryAdresse.getText();
-        softAssert.assertEquals(actulFullName, expectedFullName);
+        softAssert.assertEquals(actualFullName, expectedFullName);
 
-        String actulCompany = companyFaker;
+        String actualCompany = companyFaker;
         String expectedCompany = automationExercise.companyUnterAdresseDetailsVonDeliveryAdresse.getText();
-        softAssert.assertEquals(actulCompany, expectedCompany);
+        softAssert.assertEquals(actualCompany, expectedCompany);
 
         String actualAdresse = adresseFaker;
         String expectedAdresse = automationExercise.adresseUnterAdresseDetailsVonDeliveryAdresse.getText();
@@ -149,22 +149,22 @@ public class TestCase_14_PlaceOrderRegisterWhileCheckout extends TestBaseRapor {
                 .sendKeys(ConfigReader.getProperty("AECommentWhileCheckout"), Keys.TAB, Keys.ENTER);
 
 
-        String creditCardnummer = faker.finance().creditCard();
-        String creditCardnummerOhneMinus = creditCardnummer.replaceAll("-", "");
-
+        String creditCardnummerOhneMinus = faker.business().creditCardNumber().replaceAll("-", "");
         String cvc = random.nextInt(99, 999) + "";
+        String kreditKarteExpiry=faker.business().creditCardExpiry()+"";
 
         automationExercise.nameOnCardzurBezahlung
                 .sendKeys((CharSequence) faker.name().fullName(),
                         Keys.TAB, creditCardnummerOhneMinus,
                         Keys.TAB, cvc,
-                        Keys.TAB, "02",
+                        Keys.TAB, kreditKarteExpiry,
                         Keys.TAB, "2025",
                         Keys.TAB, Keys.ENTER);
 
 
         // softAssert.assertTrue(automationExercise.YourOrderHasBeenPlacedSuccessfullyText.isDisplayed());
         //  YourOrderHasBeenPlacedSuccessfullyText -->>nimm locate
+
         automationExercise.deleteAccountLink.click();
         extentTest.info("Es wurde auf die Schaltfläche „Delete Account“ geklickt.");
 

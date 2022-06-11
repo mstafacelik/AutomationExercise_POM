@@ -21,6 +21,8 @@ public class TestCase_20_SearchProductsAndVerifyCartAfterLogIn extends TestBaseR
     Random random;
     Faker faker;
     Actions actions;
+    int expectedZahlAllProductList;
+    int actualZahlinErgebnisSeite;
 
     @Test
     public void SearchProductsAndVerifyCartAfterLogIn() {
@@ -49,52 +51,66 @@ public class TestCase_20_SearchProductsAndVerifyCartAfterLogIn extends TestBaseR
         automationExercise.allProductsText.isDisplayed();
 
         automationExercise.searchProductBox
-                .sendKeys("t-shirt", Keys.TAB, Keys.ENTER);
+                .sendKeys("tShirt", Keys.TAB, Keys.ENTER);
 
         Driver.wait(2);
 
         Driver.waitForVisibility(automationExercise.searchedProductsText, 5);
-        automationExercise.searchedProductsText.isDisplayed();
+        softAssert.assertTrue(automationExercise.searchedProductsText.isDisplayed());
 
-        String searchedProduct = "t-shirt";
 
+        expectedZahlAllProductList = 0;
 
         for (WebElement w : automationExercise.brandAllProductsList) {
-            System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
-            softAssert.assertTrue(w.getText().toUpperCase().contains(searchedProduct.toUpperCase()));
-            softAssert.assertTrue(w.isDisplayed());
 
+            if (w.getText().contains("Tshirt") || w.getText().contains("T-Shirt") || w.getText().contains("T SHIRT")) {
+
+                expectedZahlAllProductList++;
+            }
         }
 
-        for (WebElement w : automationExercise.viewProductLinkList) {
 
-            w.click();
-            Driver.clickWithJS(automationExercise.addToChartSchaltfläche);
-            Driver.getDriver().navigate().back();
+        actualZahlinErgebnisSeite = automationExercise.productPageSearchResultList.size();
+        softAssert.assertEquals(actualZahlinErgebnisSeite, expectedZahlAllProductList);
+
+
+        for (int i = 0; i < automationExercise.addToCartTextSearchedResultPageList.size(); i += 2) {
+
+            automationExercise.addToCartTextSearchedResultPageList.get(i).click();
+            Driver.waitAndClick(automationExercise.continueShoppingSchaltfläche);
 
 
         }
 
         automationExercise.cartLink.click();
+        expectedZahlAllProductList = 0;
 
         for (WebElement w : automationExercise.brandAllProductsList) {
-            System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
-            softAssert.assertTrue(w.getText().toUpperCase().contains(searchedProduct.toUpperCase()));
-            softAssert.assertTrue(w.isDisplayed());
 
+            if (w.getText().contains("Tshirt") || w.getText().contains("T-Shirt") || w.getText().contains("T SHIRT")) {
+
+                expectedZahlAllProductList++;
+            }
         }
 
-        automationExercise.signupLoginLink.click();
-        automationExercise.logInEMailAdresseBox
-                .sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
-                        Keys.TAB,ConfigReader.getProperty("AECorrectPassword"),Keys.TAB,Keys.ENTER);
+        actualZahlinErgebnisSeite = automationExercise.productPageSearchResultList.size();
+        softAssert.assertEquals(actualZahlinErgebnisSeite, expectedZahlAllProductList);
 
+
+        automationExercise.signupLoginLink.click();
+        automationExercise.logInEMailAdresseBox.sendKeys(ConfigReader.getProperty("AECorrectEmailAdresse"),
+                Keys.TAB, ConfigReader.getProperty("AECorrectPassword"), Keys.TAB, Keys.ENTER);
+
+        automationExercise.cartLink.click();
+
+        expectedZahlAllProductList = 0;
 
         for (WebElement w : automationExercise.brandAllProductsList) {
-            System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
-            softAssert.assertTrue(w.getText().toUpperCase().contains(searchedProduct.toUpperCase()));
-            softAssert.assertTrue(w.isDisplayed());
 
+            if (w.getText().contains("Tshirt") || w.getText().contains("T-Shirt") || w.getText().contains("T SHIRT")) {
+
+                expectedZahlAllProductList++;
+            }
         }
 
         softAssert.assertAll();

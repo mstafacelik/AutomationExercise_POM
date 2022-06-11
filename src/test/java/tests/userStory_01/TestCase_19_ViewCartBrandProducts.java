@@ -45,17 +45,12 @@ public class TestCase_19_ViewCartBrandProducts extends TestBaseRapor {
         automationExercise.productsLink.click();
 
 
-        if (automationExercise.brandsList.size() > 0) {
-            System.out.println("=> Marken sind verfügbar und wie folgendes :");
-
             for (WebElement w : automationExercise.brandsList) {
                 System.out.println(w.getText() + " is displayed? " + w.isDisplayed());
                 softAssert.assertTrue(w.isDisplayed());
             }
 
-        } else {
-            System.out.println("=> Marken sind nicht verfügbar...");
-        }
+
 
 
         int brandsSize = automationExercise.brandsList.size();

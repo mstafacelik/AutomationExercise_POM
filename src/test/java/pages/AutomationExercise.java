@@ -386,6 +386,9 @@ public class AutomationExercise {
     @FindBy(xpath = "//div[@class='product-image-wrapper']")
     public List<WebElement> productPageSearchResultList;
 
+    @FindBy(xpath = "//a[@class='btn btn-default add-to-cart']")
+    public List<WebElement>addToCartTextSearchedResultPageList;
+
 
     @FindBy(xpath = "//a[@style='color: brown;']")
     public List<WebElement> viewProductLinkList;
